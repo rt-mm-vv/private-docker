@@ -1,0 +1,20 @@
+version: '3'
+
+services:
+    # --------------------
+    # Hameln_Amplify
+    # react:    3000
+    # GraphQL:  20002
+    # storage:  20005
+    # --------------------
+    hameln_amplify:
+        build: ./
+        ports:
+            - "3000:3000"
+            - "20002:20002"
+            - "20005:20005"
+        volumes:
+            - ~/dev/Hameln/amplify:/var/www/hameln
+            # aws 配下に開発用 IAM の credentials と config ファイルを作成しておくこと region は ap-northeast-1
+            - ~/dev/Hameln/docker/aws/:/root/.aws/
+        tty: true
